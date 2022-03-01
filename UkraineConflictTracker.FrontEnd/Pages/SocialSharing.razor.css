@@ -1,0 +1,16 @@
+﻿.socialsharing {
+    text-align: center;
+}
+.socialsharing a {
+    line-height: 0;
+    margin-bottom: 2em;
+}
+
+.socialsharing path {
+    fill: gray;
+}
+
+.socialsharing svg {
+    width: 24px;
+    height: 24px;
+}

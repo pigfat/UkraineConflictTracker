@@ -1,0 +1,53 @@
+# This is a basic workflow to help you get started with Actions
+
+name: DeployJordanPavlicWebApp
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  buildAndPublish:
+    runs-on: ubuntu-latest
+    steps:
+      
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - name: Dotnet Build And Publish
+        uses: EasyDesk/action-dotnet-publish@v1.0.0
+        with:
+          # Path to the project to publish.
+          path: '.'
+          # Directory where all packages will be put (default value is 'packages').
+          output-dir: 'jordanpavlic'
+          # Build configuration for the build (default value is 'Release').
+          build-configuration: 'Release'
+          # Whether to skip the build using the --no-build flag (default value is 'true').
+          skip-build: false
+  
+      - name: Deploy App to Server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH2 }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          source: "jordanpavlic/*"
+          target: "../var/www"
+          overwrite: true
+          
+      - name: Restart kestral blazor webservice
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH2 }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          script: |
+            sudo systemctl restart kestrel-jordanpavlic.service
+      

@@ -1,0 +1,20 @@
+﻿@inherits LayoutComponentBase
+@using UkraineConflictTracker.FrontEnd.Pages
+
+<PageTitle>Ukraine Conflict Tracker</PageTitle>
+
+<div class="page">
+    <main>
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="http://ukraineconflict.net">
+            <img src="/Icons/TankLogo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            Ukraine Conflict Tracker
+            </a>
+        </nav>
+        <SocialSharing></SocialSharing>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>

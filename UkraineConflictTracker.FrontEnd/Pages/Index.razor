@@ -1,0 +1,29 @@
+﻿@page "/"
+
+@using DataAccess.Data;
+@using DataAccess.Models;
+
+@inject IReport rpt;
+
+<div id="map"></div>
+
+@code{
+    [Inject]
+    public IJSRuntime jsRuntime { get; set; }
+    private List<ReportModel> reports = new();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {   
+            (double Lat, double Lng, int Zoom) defaultView = ( Lat: 48.3794, Lng: 31.1656, Zoom: 6 );
+            await jsRuntime.InvokeVoidAsync("initGoogleMap", new { Lat = defaultView.Lat, Lng = defaultView.Lng, Zoom = defaultView.Zoom });
+
+        }
+    }
+
+//    protected async override void OnInitialized()
+//    {
+//        reports = (await rpt.GetReports()).ToList();
+//    }
+}
