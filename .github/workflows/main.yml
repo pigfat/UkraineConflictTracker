@@ -24,6 +24,7 @@ jobs:
           dbHost: ${{ secrets.dbHost }}
           dbPort: ${{ secrets.dbPort }}
           dbUser: ${{ secrets.dbUser }}
+          dbName: ${{ secrets.dbName }}
           dbPassword: ${{ secrets.dbPassword }}
       
       - name: Dotnet Build And Publish
