@@ -22,9 +22,9 @@ jobs:
         uses: EasyDesk/action-dotnet-publish@v1.0.0
         with:
           # Path to the project to publish.
-          path: '.'
+          path: 'UkraineConflictTracker.FrontEnd'
           # Directory where all packages will be put (default value is 'packages').
-          output-dir: 'jordanpavlic'
+          output-dir: 'UkraineConflictTracker.FrontEnd'
           # Build configuration for the build (default value is 'Release').
           build-configuration: 'Release'
           # Whether to skip the build using the --no-build flag (default value is 'true').
@@ -37,7 +37,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH2 }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          source: "jordanpavlic/*"
+          source: "UkraineConflictTracker.FrontEnd/*"
           target: "../var/www"
           overwrite: true
           
