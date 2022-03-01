@@ -1,5 +1,14 @@
-﻿#map {
-	height:80vh;
-	width:100%;
-	border-radius: 5px;
+﻿.report {
+	display: grid;
 }
+
+	.report #map {
+		height: 60vh;
+		border-radius: 5px;
+	}
+
+	.report .info {
+		margin-top: 1vh;
+		margin-left: 10vw;
+		margin-right: 10vw;
+	}

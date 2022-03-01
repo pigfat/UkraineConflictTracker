@@ -5,7 +5,16 @@
 
 @inject IReport rpt;
 
-<div id="map"></div>
+<div class="report">
+    <div id="map"></div>
+    <div class="info">
+        <h4>Combat Reports From Ukraine</h4>
+        <p>This map shows reports of active combat occuring in Ukraine as it is reported by people on the ground or through Open Source Intelligence from sources like Twitter. The hope is that through better situational
+           awareness civilian casualties can be reduced by cutting through the fog of war and delivering information to people as rapidly as possible. Active combat can be reported by clicking on the "Report Combat" link above
+           and filling in the information. Once a report is made it will display on the Conflict Tracker map for a limited amount of time to ensure only the latest information is displayed for a given time. Eventually this information
+           can be used to directly notified civilians in high risk areas through direct messages or notifications within a certain radius of a report. Together we can save lifes!</p>
+    </div>
+</div>
 
 @code{
     [Inject]
@@ -22,8 +31,8 @@
         }
     }
 
-//    protected async override void OnInitialized()
-//    {
-//        reports = (await rpt.GetReports()).ToList();
-//    }
+    protected async override void OnInitialized()
+    {
+        reports = (await rpt.GetReports()).ToList();
+    }
 }

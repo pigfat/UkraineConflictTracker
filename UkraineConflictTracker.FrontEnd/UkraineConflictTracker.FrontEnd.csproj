@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Shared\NavMenu.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Shared\NavMenu.razor.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\UkraineConflictTracker.DataAccess\UkraineConflictTracker.DataAccess.csproj" />
   </ItemGroup>
 
